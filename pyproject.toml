@@ -1,0 +1,27 @@
+[project]
+name = "saf-kalimantan"
+version = "0.1.0"
+description = "Kalimantan SAF supply chain model"
+requires-python = ">=3.12"
+dependencies = ["numpy", "openpyxl", "pandas", "shapely"]
+
+[project.optional-dependencies]
+dev = ["mypy", "pandas-stubs", "pytest"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["saf"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.mypy]
+files = ["saf", "tests", "scripts"]
+strict = true
+
+[[tool.mypy.overrides]]
+module = ["openpyxl.*", "shapely.*"]
+ignore_missing_imports = true
